@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import utils.Utilities;
 
-public class Hooks {
+public class Core {
 
      private static Playwright playwright;
      private static Browser browser;

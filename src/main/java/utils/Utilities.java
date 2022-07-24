@@ -3,7 +3,7 @@ package utils;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
-import core.Hooks;
+import core.Core;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -23,7 +23,7 @@ public class Utilities {
 
     public static Browser initBrowser(String browserOption){
         Browser browser;
-        Playwright playwright = Hooks.getPlaywright();
+        Playwright playwright = Core.getPlaywright();
         if(browserOption.equals("chrome")){
             browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
         }else if(browserOption.equals("firefox")){

@@ -1,7 +1,7 @@
 package stepDefinitions;
 
 import com.microsoft.playwright.Page;
-import core.Hooks;
+import core.Core;
 import org.junit.Test;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -13,8 +13,8 @@ public class LoginTest {
     private final ProductsPage productsPage;
 
     public LoginTest() {
-        Hooks.initialize();
-        this.page = Hooks.getPage();
+        Core.initialize();
+        this.page = Core.getPage();
         this.loginPage = new LoginPage(this.page);
         this.productsPage = new ProductsPage(this.page);
 
