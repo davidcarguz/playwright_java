@@ -15,7 +15,7 @@ public class Hooks {
     public static void initialize(){
         Utilities.setProjectProperties();
         playwright = Playwright.create();
-        browser = Utilities.initBrowser("chrome");
+        browser = Utilities.initBrowser(System.getProperty("browser"));
         page = browser.newContext().newPage();
     }
 
