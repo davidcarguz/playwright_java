@@ -22,7 +22,7 @@ public class LoginTest {
 
     @Test
     public void successfulLoginWithStandardUser(){
-        String username = System.getProperty("standar_user");
+        String username = System.getProperty("standard_user");
         String password = System.getProperty("password");
         this.loginPage.navigateToPage();
         this.loginPage.loginWithUserAndPassword(username, password);
