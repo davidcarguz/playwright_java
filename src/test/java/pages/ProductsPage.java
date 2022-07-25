@@ -6,7 +6,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 public class ProductsPage {
 
-    private Page page;
+    private final Page page;
     private final Locator lblProducts;
 
     public ProductsPage(Page page) {
