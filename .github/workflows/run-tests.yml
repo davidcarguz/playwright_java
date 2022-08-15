@@ -5,7 +5,7 @@ on: [push]
 jobs:
 
   run-tests:
-    name: prepare environment
+    name: run tests
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
@@ -28,11 +28,8 @@ jobs:
             'standard_user'
             'secret_sauce'
             'wrong_pass'
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
+      - name: download properties file
+        uses: actions/upload-artifact@v3.1.0
         with:
-          java-version: '11'
-          distribution: 'temurin'
-          cache: maven
-      - name: run tests with maven
-        run: mvn -B package --file pom.xml
+          name: properties
+          path: ./config.properties
