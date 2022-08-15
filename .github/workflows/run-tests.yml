@@ -1,0 +1,33 @@
+name: run ui automation tests
+
+on: [push]
+
+jobs:
+
+  run-tests:
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: create properties file
+        run: | 
+          touch ./config.properties
+          echo 'url=https://www.saucedemo.com/' >> ./config.properties
+          echo 'browser=chrome' >> ./config.properties
+          echo 'standard_user=standard_user' >> ./config.properties
+          echo 'password=secret_sauce' >> ./config.properties
+          echo 'wrong_password=wrong_pass' >> ./config.properties
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+            java-version: '11'
+            distribution: 'temurin'
+            cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: create artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+            name: test report
+            path: ./target/cucumber-reports/index.html
