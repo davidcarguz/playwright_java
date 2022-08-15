@@ -1,0 +1,38 @@
+name: run ui automation tests
+
+on: [push]
+
+jobs:
+
+  run-tests:
+    name: prepare environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: create properties file
+        run: touch ./config.properties
+      - name: Write values to Properties-file
+        uses: christian-draeger/write-properties@1.1.0
+        with:
+          path: './config.properties'
+          property: |
+            'url'
+            'browser'
+            'standard_user'
+            'password'
+            'wrong_password'
+          value: |
+            'https://www.saucedemo.com/'
+            'chrome'
+            'standard_user'
+            'secret_sauce'
+            'wrong_pass'
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: run tests with maven
+        run: mvn -B package --file pom.xml
