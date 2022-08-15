@@ -18,16 +18,16 @@ jobs:
           path: './config.properties'
           property: |
             url
-            'browser'
-            'standard_user'
-            'password'
-            'wrong_password'
+            browser
+            standard_user
+            password
+            wrong_password
           value: |
-            'https://www.saucedemo.com/'
-            'chrome'
-            'standard_user'
-            'secret_sauce'
-            'wrong_pass'
+            https://www.saucedemo.com/
+            chrome
+            standard_user
+            secret_sauce
+            wrong_pass
       - name: download properties file
         uses: actions/upload-artifact@v3.1.0
         with:
