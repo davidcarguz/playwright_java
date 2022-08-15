@@ -11,23 +11,13 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: create properties file
-        run: touch ./config.properties
-      - name: Write values to Properties-file
-        uses: christian-draeger/write-properties@1.1.0
-        with:
-          path: './config.properties'
-          property: |
-            url
-            browser
-            standard_user
-            password
-            wrong_password
-          value: |
-            https://www.saucedemo.com/
-            chrome
-            standard_user
-            secret_sauce
-            wrong_pass
+        run: | 
+        touch ./config.properties
+        echo 'url=https://www.saucedemo.com/' >> ./config.properties
+        echo 'browser=chrome' >> ./config.properties
+        echo 'standard_user=standard_user' >> ./config.properties
+        echo 'password=secret_sauce' >> ./config.properties
+        echo 'wrong_password=wrong_pass' >> ./config.properties
       - name: download properties file
         uses: actions/upload-artifact@v3.1.0
         with:
