@@ -25,13 +25,13 @@ public class Utilities {
         Browser browser;
         Playwright playwright = Core.getPlaywright();
         if(browserOption.equals("chrome")){
-            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(true));
         }else if(browserOption.equals("firefox")){
-            browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(true));
         }else if(browserOption.equals("edge")){
-            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(false));
+            browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge").setHeadless(true));
         }else if(browserOption.equals("safari")){
-            browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            browser = playwright.webkit().launch(new BrowserType.LaunchOptions().setHeadless(true));
         }else{
             throw new Error("Browser specified not supported.");
         }
