@@ -18,8 +18,11 @@ jobs:
           echo 'standard_user=standard_user' >> ./config.properties
           echo 'password=secret_sauce' >> ./config.properties
           echo 'wrong_password=wrong_pass' >> ./config.properties
-      - name: download properties file
-        uses: actions/upload-artifact@v3.1.0
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          name: properties
-          path: ./config.properties
+            java-version: '11'
+            distribution: 'temurin'
+            cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
